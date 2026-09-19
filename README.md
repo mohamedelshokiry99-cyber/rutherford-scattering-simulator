@@ -210,3 +210,20 @@ Rutherford, E. (1911). *The scattering of α and β particles by matter and the 
 ## License
 
 MIT
+
+## Security review and regression tests
+
+See [SECURITY_REVIEW.md](SECURITY_REVIEW.md) for the reviewed commit, findings,
+dependency versions checked, and limitations. This is a local desktop simulator;
+the review is not a guarantee that every environment or future release is safe.
+
+From the repository root, with Git and the runtime requirements installed:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The tests verify Git's actual handling of local credential/environment files and
+exercise the physics engine without opening a GUI. Never put real credentials in
+`.env.example` or `.env.sample`. Ignore rules do not remove already-tracked secrets;
+revoke/rotate any exposed credential instead of relying on `.gitignore`.
